@@ -1,8 +1,12 @@
 package com.example.smaboy.app;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.Window;
 
 import com.example.smaboy.app.adapter.InfiniteCycleAdapter;
@@ -30,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
 
         viewpager=findViewById(R.id.viewpager);
+
+        //设置recyclerview的布局属性
+        ViewGroup.LayoutParams layoutParams = viewpager.getLayoutParams();
+        layoutParams.height=getResources().getDisplayMetrics().heightPixels/2;
+        viewpager.setLayoutParams(layoutParams);
 
 
         //模拟数据

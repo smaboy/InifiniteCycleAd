@@ -11,12 +11,30 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+
+        debug{
+
+//            manifestPlaceholders=[app_label:"@str"]
+        }
+
         release {
             minifyEnabled false
+//            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    //打debug包的命令
+    task appStart(type: Exec, dependsOn: 'installDebug') {
+        // linux
+        def adb = android.getAdbExe().toString()
+        commandLine "$adb", 'shell', 'am', 'start', '-n', 'com.example.smaboy.app/com.example.smaboy.app.MainActivity'
+    }
+
 }
+
+
+
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

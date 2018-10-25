@@ -85,14 +85,7 @@ public class InfiniteCycleAdapter extends PagerAdapter {
             @Override
             public void onPageSelected(int positon) {
                 int temp = positon % mData.size();
-                for (int i = 0; i < mData.size(); i++) {
-                    TextView view= (TextView) ll_dot_title.getChildAt(i);
-                    view.setBackground(mContext.getResources().getDrawable(R.drawable.white_dot));
-                    if (temp == i) {
-                        view.setBackground(mContext.getResources().getDrawable(R.drawable.red_dot));
-                    }
-
-                }
+                setRedDot(ll_dot_title,temp);//重新设置红点指示器的位置
             }
 
             @Override
@@ -121,6 +114,10 @@ public class InfiniteCycleAdapter extends PagerAdapter {
      *
      */
     private void setRedDot(LinearLayout ll_dot_title,int redPosition) {
+        ll_dot_title.removeAllViews();//清空所有子视图
+        if(redPosition<0||redPosition>=mData.size()) {
+            return;
+        }
 
         for(int i = 0; i < mData.size(); i++) {
             TextView textView = new TextView(mContext);

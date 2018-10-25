@@ -2,6 +2,7 @@ package com.example.smaboy.app.adapter;
 
 import android.content.Context;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.example.smaboy.app.R;
 import com.example.smaboy.app.interf.BeanInterface;
+import com.example.smaboy.app.view.DotView;
 
 import java.util.ArrayList;
 
@@ -121,22 +123,18 @@ public class InfiniteCycleAdapter extends PagerAdapter {
         }
 
         for(int i = 0; i < mData.size(); i++) {
-            TextView textView = new TextView(mContext);
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(dp2px(10),dp2px(10));
-            layoutParams.setMargins(dp2px(10),0,0,0);
-            textView.setLayoutParams(layoutParams);
-            textView.setGravity(Gravity.CENTER);
-
+            DotView dotView =new DotView(mContext);
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(dp2px(8), dp2px(8));
+            layoutParams.setMargins(dp2px(8),0,0,0);
+            dotView.setLayoutParams(layoutParams);
             //这边我们需要对小红点进行背景颜色的处理
-
-
             if(i==redPosition) {
-                textView.setBackground(mContext.getResources().getDrawable(R.drawable.red_dot));
+                dotView.setPaintColor(Color.RED);
             }else {
-                textView.setBackground(mContext.getResources().getDrawable(R.drawable.white_dot));
+                dotView.setPaintColor(Color.WHITE);
             }
 
-            ll_dot_title.addView(textView);
+            ll_dot_title.addView(dotView);
         }
     }
 

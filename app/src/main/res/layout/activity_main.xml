@@ -26,9 +26,23 @@
             app:layout_constraintTop_toBottomOf="@id/viewpager"
             android:layout_marginTop="30dp"/>
 
-        <com.example.smaboy.app.view.AdView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+        <!--<com.example.smaboy.app.view.AdView-->
+            <!--android:id="@+id/adview"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"/>-->
+
+        <com.example.smaboy.app.view.DotView
+            android:id="@+id/dotview"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_margin="20dp"
+            android:layout_gravity="center"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点我啊"
+            android:onClick="test"/>
 
     </LinearLayout>
 

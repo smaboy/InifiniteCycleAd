@@ -3,6 +3,7 @@ package com.example.smaboy.app;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.view.ViewPager;
@@ -16,6 +17,8 @@ import android.view.Window;
 import com.example.smaboy.app.adapter.InfiniteCycleAdapter;
 import com.example.smaboy.app.bean.AdData_1;
 import com.example.smaboy.app.interf.BeanInterface;
+import com.example.smaboy.app.view.AdView;
+import com.example.smaboy.app.view.DotView;
 import com.example.smaboy.app.view.InfiniteCycleViewPager;
 
 import java.util.ArrayList;
@@ -24,6 +27,7 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     private InfiniteCycleViewPager viewpager;
+    private AdView adview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         viewpager=findViewById(R.id.viewpager);
+//        adview=findViewById(R.id.adview);
 
         //设置recyclerview的布局属性
         ViewGroup.LayoutParams layoutParams = viewpager.getLayoutParams();
@@ -63,9 +68,15 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
     }
 
 
+    public void test(View view) {
 
-
+        DotView dotView=findViewById(R.id.dotview);
+        dotView.setPaintColor(Color.YELLOW);
+    }
 }

@@ -37,5 +37,5 @@
     c. 最后就是我们的循环滚动，一行代码搞定，可以设置我们滚动的延时时间
 
 #### 效果图如下所示:
-    ![image]( https://github.com/smaboy/InifiniteCycleAd/blob/master/demo1.gif)
+     <img src="demo1.gif">
 

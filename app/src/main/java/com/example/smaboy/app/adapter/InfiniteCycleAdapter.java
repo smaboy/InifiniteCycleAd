@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,9 +65,10 @@ public class InfiniteCycleAdapter extends PagerAdapter {
         //设置布局，并初始化
         View view = LayoutInflater.from(mContext).inflate(R.layout.infinite_cycle_viewpager_item, null);
         ImageView iv = view.findViewById(R.id.iv);
+        LinearLayout ll_title = view.findViewById(R.id.ll_title);
         TextView tv_title = view.findViewById(R.id.tv_title);
         final LinearLayout ll_dot_title = view.findViewById(R.id.ll_dot_title);
-        LinearLayout ll_dot = view.findViewById(R.id.ll_dot);
+        final LinearLayout ll_dot = view.findViewById(R.id.ll_dot);
 
         //确定位置
         int cur=position%mData.size();
@@ -77,6 +79,7 @@ public class InfiniteCycleAdapter extends PagerAdapter {
 
         //初始化指示器
         setRedDot(ll_dot_title,0);
+        setRedDot(ll_dot,0);
 
         //设置页面改变监听
         mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -89,6 +92,7 @@ public class InfiniteCycleAdapter extends PagerAdapter {
             public void onPageSelected(int positon) {
                 int temp = positon % mData.size();
                 setRedDot(ll_dot_title,temp);//重新设置红点指示器的位置
+                setRedDot(ll_dot,temp);
             }
 
             @Override
@@ -99,8 +103,14 @@ public class InfiniteCycleAdapter extends PagerAdapter {
 
 
         //设置布局的显示
-        ll_dot_title.setVisibility(View.VISIBLE);
-        ll_dot.setVisibility(View.GONE);
+        if(TextUtils.isEmpty(mData.get(cur).getTitle())){//判断标题是否为空
+            ll_title.setVisibility(View.GONE);
+            ll_dot.setVisibility(View.VISIBLE);
+        } else {
+            ll_title.setVisibility(View.VISIBLE);
+            ll_dot.setVisibility(View.GONE);
+        }
+
 
         //将view加入集合
         container.addView(view);

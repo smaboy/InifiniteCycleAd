@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 
 import com.example.smaboy.app.adapter.InfiniteCycleAdapter;
+import com.example.smaboy.app.bean.AdData_1;
+import com.example.smaboy.app.interf.BeanInterface;
 import com.example.smaboy.app.view.InfiniteCycleViewPager;
 
 import java.util.ArrayList;
@@ -46,12 +48,12 @@ public class MainActivity extends AppCompatActivity {
 
 
         //模拟数据
-        ArrayList<Integer> data=new ArrayList<>();
-        data.add(R.drawable.t01);
-        data.add(R.drawable.t02);
-        data.add(R.drawable.t03);
-        data.add(R.drawable.t04);
-        data.add(R.drawable.t05);
+        ArrayList<BeanInterface> data=new ArrayList<>();
+        data.add(new AdData_1("标题1","",R.drawable.t01));
+        data.add(new AdData_1("标题2","",R.drawable.t02));
+        data.add(new AdData_1("标题3","",R.drawable.t03));
+        data.add(new AdData_1("标题4","",R.drawable.t04));
+        data.add(new AdData_1("标题5","",R.drawable.t05));
 
         //设置数据
         viewpager.setAdapter(new InfiniteCycleAdapter(this,data,viewpager));

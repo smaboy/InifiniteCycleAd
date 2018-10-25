@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.smaboy.app.R;
+import com.example.smaboy.app.interf.BeanInterface;
 
 import java.util.ArrayList;
 
@@ -30,11 +31,11 @@ import java.util.ArrayList;
 public class InfiniteCycleAdapter extends PagerAdapter {
 
     private Context mContext;
-    private ArrayList<Integer> mData;
+    private ArrayList<BeanInterface> mData;
     private ViewPager mViewPager;
 
 
-    public InfiniteCycleAdapter(Context context, ArrayList<Integer> data, ViewPager viewPager) {
+    public InfiniteCycleAdapter(Context context, ArrayList<BeanInterface> data, ViewPager viewPager) {
         mContext = context;
         mData = data;
         mViewPager = viewPager;
@@ -69,8 +70,8 @@ public class InfiniteCycleAdapter extends PagerAdapter {
         int cur=position%mData.size();
 
         //设置数据
-        iv.setImageResource(mData.get(cur));
-        tv_title.setText("标题"+cur);
+        iv.setImageResource(mData.get(cur).getImgInt());
+        tv_title.setText(mData.get(cur).getTitle());
 
         //初始化指示器
         setRedDot(ll_dot_title,0);

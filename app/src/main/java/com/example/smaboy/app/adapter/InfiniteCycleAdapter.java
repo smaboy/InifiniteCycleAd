@@ -5,9 +5,9 @@ import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.view.PagerAdapter;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +15,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.smaboy.app.MainActivity;
 import com.example.smaboy.app.R;
 
 import java.util.ArrayList;
 
-import static com.example.smaboy.app.R.drawable.red_dot;
 
 /**
  * 类名: InfiniteCycleAdapter
@@ -32,6 +30,7 @@ public class InfiniteCycleAdapter extends PagerAdapter {
 
     private Context mContext;
     private ArrayList<Integer> mData;
+
 
     public InfiniteCycleAdapter(Context context, ArrayList<Integer> data) {
         mContext = context;
@@ -70,16 +69,19 @@ public class InfiniteCycleAdapter extends PagerAdapter {
         tv_title.setText("标题"+position%mData.size());
         for(int i = 0; i < mData.size(); i++) {
             TextView textView = new TextView(mContext);
-//            ViewGroup.LayoutParams layoutParams = textView.getLayoutParams();
-//            layoutParams.height=10;
-//            layoutParams.width=10;
-            textView.setLayoutParams(new LinearLayout.LayoutParams(dp2px(10),dp2px(10)));
+            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(dp2px(10),dp2px(10));
+            layoutParams.setMargins(dp2px(10),0,0,0);
+            textView.setLayoutParams(layoutParams);
+            textView.setGravity(Gravity.CENTER);
+
+//            textView.setLayoutParams(new LinearLayout.LayoutParams(dp2px(10),dp2px(10)));
+
             if(i!=0) {
-                textView.setPadding(20,0,0,0);
                 textView.setBackground(mContext.getDrawable(R.drawable.white_dot));
             }else {
                 textView.setBackground(mContext.getDrawable(R.drawable.red_dot));
             }
+
             ll_dot_title.addView(textView);
         }
         ll_dot_title.setVisibility(View.VISIBLE);
@@ -100,6 +102,9 @@ public class InfiniteCycleAdapter extends PagerAdapter {
         return (int) (mContext.getResources().getDisplayMetrics().density*dp);
 
     }
+
+
+
 
 
 

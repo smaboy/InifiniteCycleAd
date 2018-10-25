@@ -3,8 +3,12 @@ package com.example.smaboy.app;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -51,5 +55,16 @@ public class MainActivity extends AppCompatActivity {
 
         //设置数据
         viewpager.setAdapter(new InfiniteCycleAdapter(this,data));
+
+        //设置viewpager滚动循环
+        viewpager.startScroll(5000);
+
+
+    }
+
+
+    public void startScroll(int position,ViewPager viewPager){
+        viewPager.setCurrentItem(position,true);
+
     }
 }

@@ -1,5 +1,10 @@
 # InifiniteCycleAd
 ### 无限循环轮播图
+实现功能：
+  1. 无限轮询播放
+  2. 触摸停止，放开自动开启
+  3. 有标题内容会自动显示，无标题内容只显示指示器，不显示标题栏
+
 
 使用步骤
   1. 将我们自定viewpager放入布局
@@ -31,5 +36,6 @@
     b. 设置数据，这边我们只需要传递我们的上下文、数据集、InfiniteCycleViewPager的实例三个参数
     c. 最后就是我们的循环滚动，一行代码搞定，可以设置我们滚动的延时时间
 
-
+#### 效果图如下所示:
+    ![image]( https://github.com/smaboy/InifiniteCycleAd/blob/master/demo1.gif)
 

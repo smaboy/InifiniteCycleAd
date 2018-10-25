@@ -1,12 +1,12 @@
 # InifiniteCycleAd
 ### 无限循环轮播图
-实现功能：
+##### 实现功能：
   1. 无限轮询播放
   2. 触摸停止，放开自动开启
   3. 有标题内容会自动显示，无标题内容只显示指示器，不显示标题栏
 
 
-使用步骤
+##### 使用步骤
   1. 将我们自定viewpager放入布局
 
          <com.example.smaboy.app.view.InfiniteCycleViewPager

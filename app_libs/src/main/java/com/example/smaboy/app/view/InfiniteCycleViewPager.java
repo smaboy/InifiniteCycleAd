@@ -5,10 +5,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.widget.Toast;
+
+import com.example.smaboy.app.adapter.InfiniteCycleAdapter;
+import com.example.smaboy.app.interf.InfiniteCycleViewPagerItemClickListener;
 
 /**
  * 类名: InfiniteCycleViewPager
@@ -41,13 +46,17 @@ public class InfiniteCycleViewPager extends ViewPager {
 
     private int curPosition;//当前位置
     private long delayMills;//当前位置
+    private Context mContext;
+
 
     public InfiniteCycleViewPager(@NonNull Context context) {
         super(context);
+        mContext=context;
     }
 
     public InfiniteCycleViewPager(@NonNull Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        mContext=context;
     }
 
 
@@ -98,4 +107,19 @@ public class InfiniteCycleViewPager extends ViewPager {
     }
 
 
+    /**
+     * 向外提供一个item点击的监听
+     *
+     */
+    public void setItemClickListener(InfiniteCycleViewPagerItemClickListener listener) {
+
+        InfiniteCycleAdapter adapter = (InfiniteCycleAdapter) getAdapter();
+        if(adapter!=null){
+            adapter.setListener(listener);
+        } else {
+
+            Toast.makeText(mContext, "没找到这个提示", Toast.LENGTH_SHORT).show();
+        }
+
+    }
 }

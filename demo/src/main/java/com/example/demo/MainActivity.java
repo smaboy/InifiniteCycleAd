@@ -2,11 +2,14 @@ package com.example.demo;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.smaboy.app.adapter.InfiniteCycleAdapter;
 import com.example.smaboy.app.bean.AdData_1;
 import com.example.smaboy.app.interf.BeanInterface;
+import com.example.smaboy.app.interf.InfiniteCycleViewPagerItemClickListener;
 import com.example.smaboy.app.view.InfiniteCycleViewPager;
 
 import java.util.ArrayList;
@@ -47,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
 
         //设置viewpager滚动循环
         viewpager.startScroll(3000);
+
+        viewpager.setItemClickListener(new InfiniteCycleViewPagerItemClickListener() {
+            @Override
+            public void itemClick(View v, ArrayList<BeanInterface> mData, int position) {
+                //数据处理
+                Toast.makeText(MainActivity.this, "哈哈"+position, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void init() {

@@ -17,9 +17,11 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.smaboy.app.R;
 import com.example.smaboy.app.interf.BeanInterface;
+import com.example.smaboy.app.interf.InfiniteCycleViewPagerItemClickListener;
 import com.example.smaboy.app.view.DotView;
 
 import java.util.ArrayList;
@@ -36,6 +38,7 @@ public class InfiniteCycleAdapter extends PagerAdapter {
     private Context mContext;
     private ArrayList<BeanInterface> mData;
     private ViewPager mViewPager;
+    private InfiniteCycleViewPagerItemClickListener listener;
 
 
     public InfiniteCycleAdapter(Context context, ArrayList<BeanInterface> data, ViewPager viewPager) {
@@ -60,7 +63,7 @@ public class InfiniteCycleAdapter extends PagerAdapter {
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @NonNull
-    public Object instantiateItem(@NonNull ViewGroup container,  int position) {
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
 
         //设置布局，并初始化
         View view = LayoutInflater.from(mContext).inflate(R.layout.infinite_cycle_viewpager_item, null);
@@ -71,7 +74,7 @@ public class InfiniteCycleAdapter extends PagerAdapter {
         final LinearLayout ll_dot = view.findViewById(R.id.ll_dot);
 
         //确定位置
-        int cur=position%mData.size();
+        final int cur=position%mData.size();
 
         //设置数据
         iv.setImageResource(mData.get(cur).getImgInt());
@@ -98,6 +101,14 @@ public class InfiniteCycleAdapter extends PagerAdapter {
             @Override
             public void onPageScrollStateChanged(int i) {
 
+            }
+        });
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Toast.makeText(mContext, "你点击了我"+cur, Toast.LENGTH_SHORT).show();
+                listener.itemClick(v,mData,position);
             }
         });
 
@@ -161,8 +172,7 @@ public class InfiniteCycleAdapter extends PagerAdapter {
     }
 
 
-
-
-
-
+    public void setListener(InfiniteCycleViewPagerItemClickListener listener) {
+        this.listener = listener;
+    }
 }

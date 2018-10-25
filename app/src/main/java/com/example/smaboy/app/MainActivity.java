@@ -54,17 +54,16 @@ public class MainActivity extends AppCompatActivity {
         data.add(R.drawable.t05);
 
         //设置数据
-        viewpager.setAdapter(new InfiniteCycleAdapter(this,data));
+        viewpager.setAdapter(new InfiniteCycleAdapter(this,data,viewpager));
 
         //设置viewpager滚动循环
-        viewpager.startScroll(5000);
+        viewpager.startScroll(3000);
 
 
-    }
-
-
-    public void startScroll(int position,ViewPager viewPager){
-        viewPager.setCurrentItem(position,true);
 
     }
+
+
+
+
 }

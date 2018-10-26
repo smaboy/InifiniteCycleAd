@@ -108,7 +108,7 @@ public class InfiniteCycleAdapter extends PagerAdapter {
             @Override
             public void onClick(View v) {
 //                Toast.makeText(mContext, "你点击了我"+cur, Toast.LENGTH_SHORT).show();
-                listener.itemClick(v,mData,position);
+                listener.itemClick(v,mData,cur);
             }
         });
 

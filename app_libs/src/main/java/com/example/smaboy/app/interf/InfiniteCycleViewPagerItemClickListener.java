@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 /**
  * 类名: InfiniteCycleViewPagerItemClickListener
- * 类作用描述: java类作用描述
+ * 类作用描述: 回调接口
  * 作者: Smaboy
  * 创建时间: 2018/10/25 18:31
  */

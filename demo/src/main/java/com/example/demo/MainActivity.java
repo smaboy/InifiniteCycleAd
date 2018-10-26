@@ -51,11 +51,12 @@ public class MainActivity extends AppCompatActivity {
         //设置viewpager滚动循环
         viewpager.startScroll(3000);
 
+        //添加轮播图的item点击监听
         viewpager.setItemClickListener(new InfiniteCycleViewPagerItemClickListener() {
             @Override
             public void itemClick(View v, ArrayList<BeanInterface> mData, int position) {
                 //数据处理
-                Toast.makeText(MainActivity.this, "哈哈"+position, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, mData.get(position).getTitle(), Toast.LENGTH_SHORT).show();
             }
         });
     }
